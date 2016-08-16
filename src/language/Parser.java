@@ -89,7 +89,7 @@ public class Parser {
         char sym = scan.lexeme.charAt(0);
         match(Token.xSymbol);
         symset.add(sym);
-        while( lookahead == Token.xSymbol ) {
+        while( lookahead == Token.xComma ) {
             match(Token.xComma);
             sym = scan.lexeme.charAt(0);
             match(Token.xSymbol);
@@ -112,7 +112,7 @@ public class Parser {
         String snm = scan.lexeme;
         match(Token.xIdentifier);
         states.add(snm);
-        while( lookahead == Token.xIdentifier ) {
+        while( lookahead == Token.xComma ) {
             match(Token.xComma);
             snm = scan.lexeme;
             match(Token.xIdentifier);
@@ -146,7 +146,7 @@ public class Parser {
         String snm = scan.lexeme;
         match(Token.xIdentifier);
         states.add(snm);
-        while( lookahead == Token.xIdentifier ) {
+        while( lookahead == Token.xComma ) {
             match(Token.xComma);
             snm = scan.lexeme;
             match(Token.xIdentifier);
@@ -161,14 +161,13 @@ public class Parser {
     private Set<Command> parseCommands() throws SyntaxError
     {
         match(Token.xCommands);
-        match(Token.xEqual);
         match(Token.xLeftBrace);
 
         Set<Command> comset = new HashSet<>();
 
         Command com = parseOneCommand();
         comset.add(com);
-        while( lookahead == Token.xIdentifier ) {
+        while( lookahead == Token.xComma ) {
             match(Token.xComma);
             com = parseOneCommand();
             comset.add(com);
