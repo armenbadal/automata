@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 
 /**/
 public class Automata {
+    // ավտոմատի անունը
+    private String name = null;
+
     // ժապավենի թույլատրելի նիշերի բազմություն
     private Set<Character> alphabet = null;
     // վիճակների բազմություն
@@ -43,8 +46,10 @@ public class Automata {
 
 
     //
-    public Automata()
+    public Automata(String nm )
     {
+        name = nm;
+
         alphabet = new HashSet<>();
         states = new HashSet<>();
         finals = new HashSet<>();
