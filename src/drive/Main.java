@@ -23,21 +23,21 @@ public class Main {
     private static void test_b()
     {
         final String autotext =
-                "automata A0 {\n" +
-                "  alphabet = {'a, 'b, 'c}\n" +
-                "  states = {s0, s1, s2, s3}\n" +
-                "  initial = s0\n" +
-                "  finals = {s2, s3}\n" +
-                "  commands {\n" +
-                "    s0, 'a -> s1,\n" +
-                "    s1, 'b -> s1,\n" +
-                "    s0, 'c -> s2,\n" +
-                "    s2, 'c -> s2\n" +
-                "  }\n" +
-                "}\n" +
-                "\n" +
-                "rtecognize \"aaabbb\" with A0\n" +
-                "\n";
+                "automata A0 {\n"
+              + "  alphabet = {'a, 'b, 'c}\n"
+              + "  states = {s0, s1, s2, s3}\n"
+              + "  initial = s0\n"
+              + "  finals = {s2, s3}\n"
+              + "  commands {\n"
+              + "    s0, 'a -> s1,\n"
+              + "    s1, 'b -> s1,\n"
+              + "    s0, 'c -> s2,\n"
+              + "    s2, 'c -> s2\n"
+              + "  }\n"
+              + "}\n"
+              + "\n"
+              + "rtecognize \"aaabbb\" with A0\n"
+              + "\n";
         try {
             Parser pr0 = new Parser(autotext);
             AutomFarm f0 = pr0.parse();
