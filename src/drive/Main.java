@@ -2,16 +2,17 @@ package drive;
 
 import engine.Automata;
 
-/**/
+/**
+ * Created by abadalian on 8/16/16.
+ */
 public class Main {
-    //
-    private void test_a()
+    private static void test_a()
     {
-        Automata autom = new Automata();
+        Automata amo = new Automata();
     }
 
     public static void main( String[] args )
     {
-        // TODO լրացնել
+        test_a();
     }
 }
