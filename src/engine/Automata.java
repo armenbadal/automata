@@ -18,29 +18,6 @@ public class Automata {
     private String initial = null;
     // վերջնական վիճակների բազմություն
     private Set<String> finals = null;
-    // ավտոմատի հրամանը
-    private class Command {
-        // ընթացիկ վիճակ
-        public String from = null;
-        // դիտարկվող սիմվոլ
-        public char with = '\0';
-        //՛ նոր վիճակ
-        public String goes = null;
-
-        //
-        public Command( String se, char sy, String ge )
-        {
-            from = se;
-            with = sy;
-            goes = ge;
-        }
-
-        @Override
-        public String toString()
-        {
-            return String.format("%s, %c -> %s", from, with, goes);
-        }
-    }
     // հրամանների բազմություն
     private Set<Command> commands = null;
 
@@ -81,9 +58,9 @@ public class Automata {
     }
 
     //
-    public void addCommand( String fr, char sy, String gs )
+    public void addCommands( Set<Command> coms )
     {
-        commands.add(new Command(fr, sy, gs));
+        commands.addAll(coms);
     }
 
     // TODO ստուգումները տեղափոխել parser
