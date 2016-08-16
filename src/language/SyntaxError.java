@@ -2,8 +2,8 @@ package language;
 
 /**/
 public class SyntaxError extends Exception {
-    public SyntaxError( String msg )
+    public SyntaxError( String msg, int pos )
     {
-        super(msg);
+        super(String.format("Տող %d: %s", pos, msg));
     }
 }

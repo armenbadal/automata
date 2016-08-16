@@ -1,9 +1,7 @@
 package engine;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Stream;
 
 /**/
 public class Automata {
@@ -123,5 +121,11 @@ public class Automata {
             if( ci.from == so && ci.with == sy )
                 return ci.goes;
         return null;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "automata " + name + "{ ... }";
     }
 }

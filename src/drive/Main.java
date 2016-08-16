@@ -7,9 +7,7 @@ import language.Scanner;
 import language.SyntaxError;
 import language.Token;
 
-/**
- * Created by abadalian on 8/16/16.
- */
+/**/
 public class Main {
     private static void test_a()
     {
@@ -36,11 +34,12 @@ public class Main {
               + "  }\n"
               + "}\n"
               + "\n"
-              + "rtecognize \"aaabbb\" with A0\n"
+              + "recognize \"aaabbb\" with A0\n"
               + "\n";
         try {
             Parser pr0 = new Parser(autotext);
             AutomFarm f0 = pr0.parse();
+            //System.out.println(f0);
         }
         catch( SyntaxError se ) {
             System.err.println(se.getMessage());

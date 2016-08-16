@@ -33,14 +33,17 @@ public class Parser {
     {
         AutomFarm afarm = new AutomFarm();
 
-        while( lookahead == Token.xAutomata || lookahead == Token.xRecognize ) {
-            if (lookahead == Token.xAutomata) {
+        while( lookahead != Token.xEos ) {
+            if( lookahead == Token.xAutomata ) {
                 Automata autom = parseAutomata();
                 afarm.addAutomata(autom);
-            } else if (lookahead == Token.xRecognize) {
+            }
+            else if( lookahead == Token.xRecognize ) {
                 Recognize reco = parseRecognize();
                 afarm.addRecognize(reco);
             }
+            else
+                throw new SyntaxError("Շարահյուսական սխալ։", scan.line);
         }
 
         return afarm;
@@ -211,6 +214,6 @@ public class Parser {
         if( exp == lookahead )
             lookahead = scan.nextToken();
         else
-            throw new SyntaxError("Շարահյուսական սխալ։");
+            throw new SyntaxError("Շարահյուսական սխալ։", scan.line);
     }
 }

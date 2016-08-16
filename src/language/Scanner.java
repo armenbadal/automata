@@ -15,6 +15,8 @@ public class Scanner {
 
     // լեքսեմ
     public String lexeme = null;
+    // տողի համարը
+    public int line = 1;
 
     //
     public Scanner( String text )
@@ -37,8 +39,11 @@ public class Scanner {
     {
         char ch = source[position++];
 
-        while( Character.isWhitespace(ch) )
+        while( Character.isWhitespace(ch) ) {
+            if( ch == '\n' )
+                ++line;
             ch = source[position++];
+        }
 
         if( position == source.length )
             return Token.xEos;
