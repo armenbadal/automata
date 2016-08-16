@@ -1,6 +1,8 @@
 package drive;
 
 import engine.Automata;
+import language.Scanner;
+import language.Token;
 
 /**
  * Created by abadalian on 8/16/16.
@@ -8,7 +10,11 @@ import engine.Automata;
 public class Main {
     private static void test_a()
     {
-        Automata amo = new Automata();
+        Scanner scan = new Scanner("automata \"myau123\" '3 { ef } -> ");
+        Token e = scan.nextToken();
+        e = scan.nextToken();
+        e = scan.nextToken();
+        e = scan.nextToken();
     }
 
     public static void main( String[] args )

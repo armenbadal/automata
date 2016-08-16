@@ -6,7 +6,7 @@
 ````
 Program   = {(Automata|Recognize)}.
 Automata  = 'automata' Ident '{' Alphabet States Initial Finals Commands '}'.
-Alphabet  = 'automata' '=' '{' Symbol {',' Symbol} '}'.
+Alphabet  = 'alphabet' '=' '{' Symbol {',' Symbol} '}'.
 States    = 'states' '=' '{' Ident {',' Ident} '}'.
 Initial   = 'initial' '=' Ident.
 Finals    = 'finals' '=' '{' Ident {',' Ident} '}'.
