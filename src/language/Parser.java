@@ -1,9 +1,9 @@
 package language;
 
-import engine.AutomFarm;
-import engine.Automata;
-import engine.Command;
-import engine.Recognize;
+import interpreter.Engine;
+import interpreter.Automata;
+import interpreter.Command;
+import interpreter.Recognize;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,35 +23,35 @@ public class Parser {
     }
 
     //
-    public AutomFarm parse() throws SyntaxError
+    public Engine parse() throws SyntaxError
     {
         return parseProgram();
     }
 
-    // Program   = {(Automata|Recognize)}.
-    private AutomFarm parseProgram() throws SyntaxError
+    private Engine parseProgram() throws SyntaxError
     {
-        AutomFarm afarm = new AutomFarm();
+        // Program   = {(Automata|Recognize)}.
+        Engine aeng = new Engine();
 
         while( lookahead != Token.xEos ) {
             if( lookahead == Token.xAutomata ) {
                 Automata autom = parseAutomata();
-                afarm.addAutomata(autom);
+                aeng.addAutomata(autom);
             }
             else if( lookahead == Token.xRecognize ) {
                 Recognize reco = parseRecognize();
-                afarm.addRecognize(reco);
+                aeng.addRecognize(reco);
             }
             else
                 throw new SyntaxError("Շարահյուսական սխալ։", scan.line);
         }
 
-        return afarm;
+        return aeng;
     }
 
-    // Automata  = 'automata' Ident '{' Alphabet States Initial Finals Commands '}'.
     private Automata parseAutomata() throws SyntaxError
     {
+        // Automata  = 'automata' Ident '{' Alphabet States Initial Finals Commands '}'.
         match(Token.xAutomata);
         String aunam = scan.lexeme;
         match(Token.xIdentifier);
@@ -80,9 +80,9 @@ public class Parser {
         return autom;
     }
 
-    // Alphabet  = 'alphabet' '=' '{' Symbol {',' Symbol} '}'.
     private Set<Character> parseAlphabet() throws SyntaxError
     {
+        // Alphabet  = 'alphabet' '=' '{' Symbol {',' Symbol} '}'.
         match(Token.xAlphabet);
         match(Token.xEqual);
         match(Token.xLeftBrace);
@@ -103,9 +103,9 @@ public class Parser {
         return symset;
     }
 
-    // States    = 'states' '=' '{' Ident {',' Ident} '}'.
     private Set<String> parseStates() throws SyntaxError
     {
+        // States    = 'states' '=' '{' Ident {',' Ident} '}'.
         match(Token.xStates);
         match(Token.xEqual);
         match(Token.xLeftBrace);
@@ -126,9 +126,9 @@ public class Parser {
         return states;
     }
 
-    // Initial   = 'initial' '=' Ident.
     private String parseInitial() throws SyntaxError
     {
+        // Initial   = 'initial' '=' Ident.
         match(Token.xInitial);
         match(Token.xEqual);
         String state = scan.lexeme;
@@ -137,9 +137,9 @@ public class Parser {
         return state;
     }
 
-    // Finals    = 'finals' '=' '{' Ident {',' Ident} '}'.
     private Set<String> parseFinals() throws SyntaxError
     {
+        // Finals    = 'finals' '=' '{' Ident {',' Ident} '}'.
         match(Token.xFinals);
         match(Token.xEqual);
         match(Token.xLeftBrace);
@@ -160,9 +160,9 @@ public class Parser {
         return states;
     }
 
-    // Commands  = 'commands' '=' '{' Command {',' Command} '}'.
     private Set<Command> parseCommands() throws SyntaxError
     {
+        // Commands  = 'commands' '=' '{' Command {',' Command} '}'.
         match(Token.xCommands);
         match(Token.xLeftBrace);
 
@@ -180,9 +180,9 @@ public class Parser {
         return comset;
     }
 
-    // Command   = Ident ',' Symbol '->' Ident.
     private Command parseOneCommand() throws SyntaxError
     {
+        // Command   = Ident ',' Symbol '->' Ident.
         String from = scan.lexeme;
         match(Token.xIdentifier);
         match(Token.xComma);
@@ -195,9 +195,9 @@ public class Parser {
         return new Command(from, with, goes);
     }
 
-    // Recognize = 'recognize' String 'with' Ident.
     private Recognize parseRecognize() throws SyntaxError
     {
+        // Recognize = 'recognize' String 'with' Ident.
         match(Token.xRecognize);
         String pattern = scan.lexeme;
         match(Token.xString);

@@ -1,15 +1,15 @@
-package engine;
+package interpreter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**/
-public class AutomFarm {
+public class Engine {
     private List<Automata> automatas = null;
     private List<Recognize> recogizes = null;
 
     //
-    public AutomFarm()
+    public Engine()
     {
         automatas = new ArrayList<>();
         recogizes = new ArrayList<>();

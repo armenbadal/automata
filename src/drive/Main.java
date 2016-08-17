@@ -1,7 +1,6 @@
 package drive;
 
-import engine.AutomFarm;
-import engine.Automata;
+import interpreter.Engine;
 import language.Parser;
 import language.Scanner;
 import language.SyntaxError;
@@ -38,7 +37,7 @@ public class Main {
               + "\n";
         try {
             Parser pr0 = new Parser(autotext);
-            AutomFarm f0 = pr0.parse();
+            Engine f0 = pr0.parse();
             //System.out.println(f0);
         }
         catch( SyntaxError se ) {

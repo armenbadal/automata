@@ -1,4 +1,4 @@
-package engine;
+package interpreter;
 
 // ավտոմատի հրամանը
 public class Command {
