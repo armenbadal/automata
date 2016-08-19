@@ -38,7 +38,7 @@ public class Main {
         try {
             Parser pr0 = new Parser(autotext);
             Engine f0 = pr0.parse();
-            //System.out.println(f0);
+            f0.run();
         }
         catch( SyntaxError se ) {
             System.err.println(se.getMessage());

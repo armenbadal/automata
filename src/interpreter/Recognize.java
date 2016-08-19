@@ -10,4 +10,10 @@ public class Recognize {
         pattern = pa;
         automata = au;
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format("recognize \"%s\" with %s", pattern, automata);
+    }
 }

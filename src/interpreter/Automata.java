@@ -6,7 +6,7 @@ import java.util.Set;
 /**/
 public class Automata {
     // ավտոմատի անունը
-    private String name = null;
+    public String name = null;
 
     // ժապավենի թույլատրելի նիշերի բազմություն
     private Set<Character> alphabet = null;
